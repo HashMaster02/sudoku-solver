@@ -1,5 +1,6 @@
 import sys
 from Board_A20489853 import Puzzle
+from Solver_A20489853 import Solver
 
 if __name__ == "__main__":
 
@@ -30,4 +31,5 @@ if __name__ == "__main__":
 
     # Begin solver
     puzzle = Puzzle(FILENAME)
-    puzzle.print_board()
+    solver = Solver(puzzle)
+    solver.brute_force()
