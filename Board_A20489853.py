@@ -1,5 +1,7 @@
 import csv
 import os
+import time
+
 
 class Puzzle:
 

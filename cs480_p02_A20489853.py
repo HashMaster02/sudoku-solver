@@ -29,7 +29,17 @@ if __name__ == "__main__":
           f"Input file: {FILENAME} \n"
           f"Algorithm: {algorithms[ALGO]}")
 
-    # Begin solver
+    # Begin solving
     puzzle = Puzzle(FILENAME)
     solver = Solver(puzzle)
-    solver.brute_force()
+
+    if ALGO == "1":
+        solver.brute_force()
+    elif ALGO == "2":
+        solver.backtracking()
+    elif ALGO == "3":
+        # Backtracking with MRV Heuristics
+        pass
+    elif ALGO == "4":
+        val = solver.is_solved()
+        print("This is a valid, solved Sudoku puzzle.") if val else print("This is NOT a solved Sudoku puzzle.")
