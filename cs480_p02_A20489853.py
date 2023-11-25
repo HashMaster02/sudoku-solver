@@ -28,7 +28,7 @@ if __name__ == "__main__":
     print(f"Last_Name, First_Name, AXXXXXXXX solution: \n"
           f"Input file: {FILENAME} \n"
           f"Algorithm: {algorithms[ALGO]}")
-
+        
     # Begin solving
     puzzle = Puzzle(FILENAME)
     solver = Solver(puzzle)
@@ -43,3 +43,7 @@ if __name__ == "__main__":
     elif ALGO == "4":
         val = solver.is_solved()
         print("This is a valid, solved Sudoku puzzle.") if val else print("This is NOT a solved Sudoku puzzle.")
+    # # FOR TESTING (DELETE BEFORE SUBMITTING)
+    # puzzle = Puzzle("testcase1.csv")
+    # solver = Solver(puzzle)
+    # solver.backtracking()

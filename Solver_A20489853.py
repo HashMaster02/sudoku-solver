@@ -1,4 +1,5 @@
 import collections
+import time
 
 
 class Solver:
@@ -60,7 +61,19 @@ class Solver:
 
         # recurse until solved
         def solve_further():
-            pass
+            if len(variables) == 0:
+                return
+            r, c = variables.pop()
+
+            for num in range(1, 10):
+                self.puzzle.board[r][c] = str(num)
+                if self.valid_move():
+                    self.puzzle.pprint()
+                    solve_further()
+                if self.is_solved():
+                    return
+            self.puzzle.board[r][c] = 'X'
+            variables.append((r, c))
 
         solve_further()
 
