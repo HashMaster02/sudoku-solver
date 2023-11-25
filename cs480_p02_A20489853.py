@@ -43,6 +43,7 @@ if __name__ == "__main__":
     elif ALGO == "4":
         val = solver.is_solved()
         print("This is a valid, solved Sudoku puzzle.") if val else print("This is NOT a solved Sudoku puzzle.")
+
     # # FOR TESTING (DELETE BEFORE SUBMITTING)
     # puzzle = Puzzle("testcase1.csv")
     # solver = Solver(puzzle)

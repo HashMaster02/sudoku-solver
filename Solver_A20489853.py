@@ -26,13 +26,8 @@ class Solver:
         return True
 
     def brute_force(self):
-        variables = []
-
-        # get a set of all empty cells
-        for row in range(9):
-            for col in range(9):
-                if self.puzzle.board[row][col] == 'X':
-                    variables.append((row, col))
+        # Get set of empty cells
+        variables = self.get_vars()
 
         # check every possible board arrangement
         def check_permutations(var):
@@ -50,13 +45,8 @@ class Solver:
         check_permutations(0)
 
     def backtracking(self):
-        variables = []
-
-        # get a set of all empty cells
-        for row in range(9):
-            for col in range(9):
-                if self.puzzle.board[row][col] == 'X':
-                    variables.append((row, col))
+        # Get set of empty cells
+        variables = self.get_vars()
         variables.reverse()
 
         # recurse until solved
@@ -77,6 +67,9 @@ class Solver:
 
         solve_further()
 
+    def mrv_heuristics(self):
+        pass
+
     def is_solved(self):
         cols = collections.defaultdict(set)
         rows = collections.defaultdict(set)
@@ -94,3 +87,11 @@ class Solver:
                 blocks[(row // 3, col // 3)].add(curr)
 
         return True
+
+    def get_vars(self):
+        lst = []
+        for row in range(9):
+            for col in range(9):
+                if self.puzzle.board[row][col] == 'X':
+                    lst.append((row, col))
+        return lst
