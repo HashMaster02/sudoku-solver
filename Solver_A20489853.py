@@ -6,6 +6,7 @@ class Solver:
 
     def __init__(self, puzzle):
         self.puzzle = puzzle
+        self.nodes = 0
 
     def brute_force(self):
         # Get set of empty cells
@@ -18,6 +19,7 @@ class Solver:
 
             (r, c) = variables[var]
             for num in range(1, 10):
+                self.nodes += 1
                 self.puzzle.board[r][c] = str(num)
                 self.puzzle.pprint()
                 check_permutations(var+1)
@@ -38,6 +40,7 @@ class Solver:
             r, c = variables.pop()
 
             for num in range(1, 10):
+                self.nodes += 1
                 self.puzzle.board[r][c] = str(num)
                 if self.valid_move():
                     self.puzzle.pprint()
@@ -90,6 +93,7 @@ class Solver:
             r, c = variables.pop()
 
             for num in mappings[(r, c)]:
+                self.nodes += 1
                 self.puzzle.board[r][c] = str(num)
                 if self.valid_move():
                     self.puzzle.pprint()

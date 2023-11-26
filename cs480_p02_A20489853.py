@@ -1,4 +1,5 @@
 import sys
+from time import time
 from Board_A20489853 import Puzzle
 from Solver_A20489853 import Solver
 
@@ -34,15 +35,25 @@ if __name__ == "__main__":
     solver = Solver(puzzle)
 
     if ALGO == "1":
+        t0 = time()
         solver.brute_force()
+        t1 = time()
     elif ALGO == "2":
+        t0 = time()
         solver.backtracking()
+        t1 = time()
     elif ALGO == "3":
-        # Backtracking with MRV Heuristics
+        t0 = time()
         solver.mrv_heuristics()
+        t1 = time()
     elif ALGO == "4":
         val = solver.is_solved()
+        t0 = 0
+        t1 = 0
         print("This is a valid, solved Sudoku puzzle.") if val else print("This is NOT a solved Sudoku puzzle.")
+
+    print(f"Number of search tree nodes generated: {solver.nodes} \n"
+          f"Search Time: {t1-t0} seconds")
 
     # # FOR TESTING (DELETE BEFORE SUBMITTING)
     # puzzle = Puzzle("testcase6.csv")
