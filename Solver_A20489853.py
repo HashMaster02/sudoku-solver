@@ -82,8 +82,6 @@ class Solver:
                         self.puzzle.board[row][col] = domain.pop()  # plug the value in immediately if only 1 remains
                     else:
                         mappings.setdefault((row, col), domain)
-                        variables.append((row, col))
-        print(mappings)
         variables.reverse()
 
         # Apply backtracking over remaining domain values
