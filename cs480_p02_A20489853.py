@@ -39,12 +39,12 @@ if __name__ == "__main__":
         solver.backtracking()
     elif ALGO == "3":
         # Backtracking with MRV Heuristics
-        pass
+        solver.mrv_heuristics()
     elif ALGO == "4":
         val = solver.is_solved()
         print("This is a valid, solved Sudoku puzzle.") if val else print("This is NOT a solved Sudoku puzzle.")
 
     # # FOR TESTING (DELETE BEFORE SUBMITTING)
-    # puzzle = Puzzle("testcase1.csv")
+    # puzzle = Puzzle("testcase6.csv")
     # solver = Solver(puzzle)
-    # solver.backtracking()
+    # solver.mrv_heuristics()
