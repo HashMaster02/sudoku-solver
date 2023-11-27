@@ -18,44 +18,36 @@ if __name__ == "__main__":
 
     # Print assignment information
 
-    # just a helper for printing information about the algorithm
-    algorithms = {
-        "1": "Brute Force Search",
-        "2": "Constraint Satisfaction Problem Back-tracking Search",
-        "3": "CSP with Forward-checking and MRV Heuristics",
-        "4": "Solution Verification"
-    }
-
     print(f"Last_Name, First_Name, AXXXXXXXX solution: \n"
-          f"Input file: {FILENAME} \n"
-          f"Algorithm: {algorithms[ALGO]}")
+          f"Input file: {FILENAME} \n")
         
     # Begin solving
     puzzle = Puzzle(FILENAME)
     solver = Solver(puzzle)
 
     if ALGO == "1":
+        print("Algorithm: Brute Force Search")
         t0 = time()
         solver.brute_force()
         t1 = time()
     elif ALGO == "2":
+        print("Algorithm: Constraint Satisfaction Problem Back-tracking Search")
         t0 = time()
         solver.backtracking()
         t1 = time()
     elif ALGO == "3":
+        print("Algorithm: CSP with Forward-checking and MRV Heuristics")
         t0 = time()
         solver.mrv_heuristics()
         t1 = time()
     elif ALGO == "4":
+        print("Solution Verification")
         val = solver.is_solved()
-        t0 = 0
-        t1 = 0
         print("This is a valid, solved Sudoku puzzle.") if val else print("This is NOT a solved Sudoku puzzle.")
+        sys.exit()
+
+    # Write puzzle back to CSV file (testcase#_solution.csv)
+    puzzle.write_to(FILENAME)
 
     print(f"Number of search tree nodes generated: {solver.nodes} \n"
-          f"Search Time: {t1-t0} seconds")
-
-    # # FOR TESTING (DELETE BEFORE SUBMITTING)
-    # puzzle = Puzzle("testcase6.csv")
-    # solver = Solver(puzzle)
-    # solver.mrv_heuristics()
+          f"Search Time: {t1 - t0} seconds")

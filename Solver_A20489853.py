@@ -75,14 +75,19 @@ class Solver:
                 if self.puzzle.board[row][col] == 'X':
                     domain = []
                     for i in range(1, 10):
-                        if str(i) in rows[row] or str(i) in cols[col] or str(i) in blocks[(row // 3, col // 3)]:
-                            continue
-                        domain.append(str(i))
+                        if str(i) not in rows[row] or str(i) not in cols[col] or str(i) not in blocks[(row // 3, col // 3)]:
+                            domain.append(str(i))
                     if len(domain) == 1:
                         self.puzzle.board[row][col] = domain.pop()  # plug the value in immediately if only 1 remains
                     else:
                         mappings.setdefault((row, col), domain)
+                        variables.append((row, col))
         variables.reverse()
+
+        # If the puzzle is solved, print and return
+        if len(variables) == 0:
+            self.puzzle.pprint()
+            return
 
         # Apply backtracking over remaining domain values
         def solve_further():

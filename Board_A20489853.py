@@ -16,6 +16,12 @@ class Puzzle:
                 rows.append(list(row))
         return rows
 
+    def write_to(self, filename):
+        output_file = f"{filename.split('.')[0]}_solution.csv"
+        with open(output_file, "w+") as my_csv:
+            writer = csv.writer(my_csv, delimiter=',', lineterminator="\n")
+            writer.writerows(self.board)
+
     def pprint(self):
         os.system('cls')
         for i in range(len(self.board)):
